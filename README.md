@@ -48,7 +48,7 @@ Still in your terminal, SSH as root in your My Cloud :<br/>
 &nbsp;<b>cd incron_bin</b><br/>
 &nbsp;<b>chmod 700 *</b><br/>
 &nbsp;<b>./install.sh</b><br/>
-&nbsp;<b>rm -rf .<br/>
+&nbsp;<b>rm -rf .</b><br/>
 </p>
 
 <h3>Step 3 : Setup the file sorting script</h3>
