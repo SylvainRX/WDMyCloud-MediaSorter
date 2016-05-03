@@ -76,12 +76,12 @@ Save and exit.
 Finally, you need to set up incron to watch for events happening in
 your repository :
 &nbsp;&nbsp;<b>incrontab -e</b><br/>
-Add the following line in the opened file :
+Add the following line in the opened file :<br/>
 &nbsp;&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
-Save and exit.
+Save and exit.<br/>
 
-Make sure incron is running :
+Make sure incron is running :<br/>
 &nbsp;&nbsp;<b>/etc/init.d/incron status<b><br/>
-And if it is not :
+And if it is not :<br/>
 &nbsp;&nbsp;<b>/etc/init.d/incron start<b><br/>
 </p>
