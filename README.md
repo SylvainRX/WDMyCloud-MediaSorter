@@ -72,7 +72,7 @@ Then download the sorting script files :<br/>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
 &nbsp;<b>nano sortmedias.sh</b><br/>
-Edit the following lines in the opened file :<br/>
+Edit the following lines in the opened file so the path are right :<br/>
 &nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
 &nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
