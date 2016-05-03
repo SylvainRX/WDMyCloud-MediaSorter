@@ -65,8 +65,8 @@ Then download the sorting script files :<br/>
 &nbsp;<b>mkdir /root/.incron</b><br/>
 &nbsp;<b>cd /root/.incron</b><br/>
 &nbsp;<b>curl %sortmedia_scripts%</b><br/>
-&nbsp;<b>mv sortmedia_scripts/* .</b><br/>
-&nbsp;<b>rm sortmedia_scripts</b><br/>
+&nbsp;<b>mv %sortmedia_scripts%/* .</b><br/>
+&nbsp;<b>rm %sortmedia_scripts%</b><br/>
 &nbsp;<b>chmod 700 *</b><br/>
 </p>
 <p>
