@@ -22,12 +22,14 @@ project is v04.04.02-105 and this setup won't function on earlier
 builds.
 </p>
 
+<h2>Setup</h2>
 <h3>Step 1 : Enable SSH access to My Cloud</h3>
 <p>
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
-web browser, open http://wdmycloud.local and log in.
-Toggle off : Settings > Firmware > Auto Update > Enable Auto Update
+web browser, open http://wdmycloud.local and log in.<br/>
+Toggle off : Settings > Firmware > Auto Update > Enable Auto Update<br/>
+</p>
 
 Still from that same page, you must enable SSH access:
 Toggle on : Settings > Network Services > SSH
