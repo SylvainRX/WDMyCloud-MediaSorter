@@ -81,7 +81,7 @@ Add the following line in the opened file :<br/>
 Save and exit.<br/>
 
 Make sure incron is running :<br/>
-&nbsp;&nbsp;<b>/etc/init.d/incron status<b><br/>
+&nbsp;&nbsp;<b>/etc/init.d/incron status</b><br/>
 And if it is not :<br/>
-&nbsp;&nbsp;<b>/etc/init.d/incron start<b><br/>
+&nbsp;&nbsp;<b>/etc/init.d/incron start</b><br/>
 </p>
