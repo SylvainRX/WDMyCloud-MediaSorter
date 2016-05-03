@@ -85,7 +85,5 @@ Save and exit.<br/>
 </p>
 <p>
 Make sure incron is running :<br/>
-&nbsp;<b>/etc/init.d/incron status</b><br/>
-And if it is not :<br/>
 &nbsp;<b>/etc/init.d/incron start</b><br/>
 </p>
