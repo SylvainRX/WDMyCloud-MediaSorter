@@ -48,6 +48,7 @@ Still in your terminal, SSH as root in your My Cloud :<br/>
 &nbsp;<b>cd incron_bin</b><br/>
 &nbsp;<b>chmod 700 *</b><br/>
 &nbsp;<b>./install.sh</b><br/>
+&nbsp;<b>rm -rf .<br/>
 </p>
 
 <h3>Step 3 : Setup the file sorting script</h3>
@@ -63,7 +64,7 @@ Then download the sorting script files :<br/>
 &nbsp;<b>mkdir /root/.incron</b><br/>
 &nbsp;<b>cd /root/.incron</b><br/>
 &nbsp;<b>curl %sortmedia_scripts%</b><br/>
-&nbsp;<b>cp sortmedia_scripts/* .</b><br/>
+&nbsp;<b>mv sortmedia_scripts/* .</b><br/>
 &nbsp;<b>rm sortmedia_scripts</b><br/>
 &nbsp;<b>chmod 700 *</b><br/>
 </p>
@@ -71,7 +72,7 @@ Then download the sorting script files :<br/>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
 &nbsp;<b>nano sortmedias.sh</b><br/>
-Edit the following lines in the opened file :
+Edit the following lines in the opened file :<br/>
 &nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
 &nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
