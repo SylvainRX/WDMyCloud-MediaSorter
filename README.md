@@ -89,3 +89,7 @@ Save and exit.<br/>
 Make sure incron is running :<br/>
 &nbsp;<b>/etc/init.d/incron start</b><br/>
 </p>
+<p>
+Your WD My Cloud should now be able to sort any files or directory of files dropped into /shares/YourShare/repository. You can further edit sortmedias.sh to specify a directory in which write a log file and a trash directory to move unsorted files into.<br/>
+I have made this sorting algorithm in a way that the bittorrent client Transmission can also drop its downloaded files into the sorting repository and have them sorted automatically.
+<p>
