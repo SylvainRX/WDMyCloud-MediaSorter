@@ -1,5 +1,6 @@
 # Automatically sort media files on a WD My Cloud NAS with Incron
 
+<h2>Introduction</h2>
 <p>
 WD My Cloud is a NAS with a web access provided by Western Digital.
 As it is, it is a great storing device for your media center
