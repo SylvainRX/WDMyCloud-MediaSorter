@@ -28,7 +28,7 @@ builds.
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
 web browser, open http://wdmycloud.local and log in.<br/>
-<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
+</t><b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
 </p>
 <p>
 Still from that same page, you must enable SSH access:<br/>
