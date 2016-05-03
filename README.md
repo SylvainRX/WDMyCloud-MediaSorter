@@ -3,7 +3,7 @@
 <p>
 WD My Cloud is a NAS with a web access provided by Western Digital.
 As it is, it is a great storing device for your media center
-(eg: https://kodi.tv/) but it can become a repetitive task to find
+(eg : https://kodi.tv/) but it can become a repetitive task to find
 the right path, in your library, in which to store each newly
 downloaded TV show episode or movie. Although, the My Cloud running
 under a modified version of Debian so it can be tweaked to suit
@@ -31,10 +31,10 @@ web browser, open http://wdmycloud.local and log in.<br/>
 &nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
 </p>
 <p>
-Still from that same page, you must enable SSH access:<br/>
+Still from that same page, you must enable SSH access :<br/>
 &nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
 </p>
-Then from your terminal: <br/>
+Then from your terminal : <br/>
 &nbsp;<b>ssh root@wdmycloud.local</b><br/>
 The default password is welc0me, you should change it once your are
 logged in.
@@ -42,7 +42,7 @@ logged in.
 
 <h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
-Still in your terminal, SSH as root in your My Cloud:<br/>
+Still in your terminal, SSH as root in your My Cloud :<br/>
 &nbsp;<b>curl %incron_bin%</b><br/>
 &nbsp;<b>cd incron_bin</b><br/>
 &nbsp;<b>chmod 700 *</b><br/>
