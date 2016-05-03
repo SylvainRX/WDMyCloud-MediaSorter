@@ -28,14 +28,14 @@ builds.
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
 web browser, open http://wdmycloud.local and log in.<br/>
-&nbsp;&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
+&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
 </p>
 <p>
 Still from that same page, you must enable SSH access:<br/>
-&nbsp;&nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
+&nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
 </p>
 Then from your terminal: <br/>
-&nbsp;&nbsp;<b>ssh root@wdmycloud.local</b><br/>
+&nbsp;<b>ssh root@wdmycloud.local</b><br/>
 The default password is welc0me, you should change it once your are
 logged in.
 </p>
@@ -43,10 +43,10 @@ logged in.
 <h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
 Still in your terminal, SSH as root in your My Cloud:<br/>
-&nbsp;&nbsp;<b>curl %incron_bin%</b><br/>
-&nbsp;&nbsp;<b>cd incron_bin</b><br/>
-&nbsp;&nbsp;<b>chmod 700 *</b><br/>
-&nbsp;&nbsp;<b>./install.sh</b><br/>
+&nbsp;<b>curl %incron_bin%</b><br/>
+&nbsp;<b>cd incron_bin</b><br/>
+&nbsp;<b>chmod 700 *</b><br/>
+&nbsp;<b>./install.sh</b><br/>
 </p>
 
 <h3>Step 3 : Setup the file sorting script</h3>
@@ -54,38 +54,38 @@ Still in your terminal, SSH as root in your My Cloud:<br/>
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
 sorting algorithm to watch in for newly added media files :<br/>
-&nbsp;&nbsp;<b>mkdir /shares/YourShare/repository</b><br/>
-&nbsp;&nbsp;<b>chmod 777 /shares/YourShare/repository</b><br/>
+&nbsp;<b>mkdir /shares/YourShare/repository</b><br/>
+&nbsp;<b>chmod 777 /shares/YourShare/repository</b><br/>
 </p>
 <p>
 Then download the sorting script files :<br/>
-&nbsp;&nbsp;<b>mkdir /root/.incron</b><br/>
-&nbsp;&nbsp;<b>cd /root/.incron</b><br/>
-&nbsp;&nbsp;<b>curl %sortmedia_scripts%</b><br/>
-&nbsp;&nbsp;<b>cp sortmedia_scripts/* .</b><br/>
-&nbsp;&nbsp;<b>rm sortmedia_scripts</b><br/>
-&nbsp;&nbsp;<b>chmod 700 *</b><br/>
+&nbsp;<b>mkdir /root/.incron</b><br/>
+&nbsp;<b>cd /root/.incron</b><br/>
+&nbsp;<b>curl %sortmedia_scripts%</b><br/>
+&nbsp;<b>cp sortmedia_scripts/* .</b><br/>
+&nbsp;<b>rm sortmedia_scripts</b><br/>
+&nbsp;<b>chmod 700 *</b><br/>
 </p>
 <p>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
-&nbsp;&nbsp;<b>nano sortmedias.sh</b><br/>
+&nbsp;<b>nano sortmedias.sh</b><br/>
 Edit the following lines in the opened file :
-&nbsp;&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
-&nbsp;&nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
+&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
+&nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
 </p>
 <p>
 Finally, you need to set up incron to watch for events happening in
-your repository :
-&nbsp;&nbsp;<b>incrontab -e</b><br/>
+your repository :<br/>
+&nbsp;<b>incrontab -e</b><br/>
 Add the following line in the opened file :<br/>
-&nbsp;&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
+&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
 Save and exit.<br/>
 </p>
 <p>
 Make sure incron is running :<br/>
-&nbsp;&nbsp;<b>/etc/init.d/incron status</b><br/>
+&nbsp;<b>/etc/init.d/incron status</b><br/>
 And if it is not :<br/>
-&nbsp;&nbsp;<b>/etc/init.d/incron start</b><br/>
+&nbsp;<b>/etc/init.d/incron start</b><br/>
 </p>
