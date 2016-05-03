@@ -18,9 +18,9 @@ the library.
 The modification you may do after using SSH to log into your WD My
 Cloud may void its warranty and I won't take any responsibility
 over that. This tutorial is only for an informative purpose.<br/>
-<b>The firmware version on the WD My Cloud that has been used for this
-project is v04.04.02-105 and this setup won't function on earlier
-builds.</b>
+<b>The firmware version on the WD My Cloud that has been used for
+this project is v04.04.02-105 and this setup won't function on
+earlier builds.</b>
 </p>
 
 <h2>Setup</h2>
@@ -29,7 +29,8 @@ builds.</b>
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
 web browser, open http://wdmycloud.local and log in. Then :<br/>
-&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
+&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable
+Auto Update </b><br/>
 </p>
 <p>
 From that same page, you must enable SSH access :<br/>
@@ -72,8 +73,10 @@ Then download the sorting script files :<br/>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
 &nbsp;<b>nano sortmedias.sh</b><br/>
-Edit the following lines in the opened file so the path are right :<br/>
-&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
+Edit the following lines in the opened file so the path are right :
+<br/>
+&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b>
+<br/>
 &nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
 </p>
@@ -82,7 +85,8 @@ Finally, you need to set up incron to watch for events happening in
 your repository :<br/>
 &nbsp;<b>incrontab -e</b><br/>
 Add the following line in the opened file :<br/>
-&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
+&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR
+"/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
 Save and exit.<br/>
 </p>
 <p>
@@ -90,6 +94,11 @@ Make sure incron is running :<br/>
 &nbsp;<b>/etc/init.d/incron start</b><br/>
 </p>
 <p>
-Your WD My Cloud should now be able to sort any files or directory of files dropped into /shares/YourShare/repository. You can further edit sortmedias.sh to specify a directory in which write a log file and a trash directory to move unsorted files into.<br/>
-I have made this sorting algorithm in a way that the bittorrent client Transmission can also drop its downloaded files into the sorting repository and have them sorted automatically.
+Your WD My Cloud should now be able to sort any files or directory
+of files dropped into /shares/YourShare/repository. You can further
+edit sortmedias.sh to specify a directory in which write a log file
+and a trash directory to move unsorted files into.<br/>
+I have made this sorting algorithm in a way that the bittorrent
+client Transmission can also drop its downloaded files into the
+sorting repository and have them sorted automatically.
 <p>
