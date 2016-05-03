@@ -56,7 +56,8 @@ Still as root in your My Cloud, create a directory under
 sorting algorithm to watch in for newly added media files :<br/>
 &nbsp;&nbsp;<b>mkdir /shares/YourShare/repository</b><br/>
 &nbsp;&nbsp;<b>chmod 777 /shares/YourShare/repository</b><br/>
-
+</p>
+<p>
 Then download the sorting script files :<br/>
 &nbsp;&nbsp;<b>mkdir /root/.incron</b><br/>
 &nbsp;&nbsp;<b>cd /root/.incron</b><br/>
@@ -64,7 +65,8 @@ Then download the sorting script files :<br/>
 &nbsp;&nbsp;<b>cp sortmedia_scripts/* .</b><br/>
 &nbsp;&nbsp;<b>rm sortmedia_scripts</b><br/>
 &nbsp;&nbsp;<b>chmod 700 *</b><br/>
-
+</p>
+<p>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
 &nbsp;&nbsp;<b>nano sortmedias.sh</b><br/>
@@ -72,14 +74,16 @@ Edit the following lines in the opened file :
 &nbsp;&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
 &nbsp;&nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
-
+</p>
+<p>
 Finally, you need to set up incron to watch for events happening in
 your repository :
 &nbsp;&nbsp;<b>incrontab -e</b><br/>
 Add the following line in the opened file :<br/>
 &nbsp;&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
 Save and exit.<br/>
-
+</p>
+<p>
 Make sure incron is running :<br/>
 &nbsp;&nbsp;<b>/etc/init.d/incron status</b><br/>
 And if it is not :<br/>
