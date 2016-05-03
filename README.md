@@ -46,7 +46,7 @@ logged in.
 <p>
 Still in your terminal, SSH as root in your My Cloud :<br/>
 &nbsp;<b>curl %incron_bin%</b><br/>
-&nbsp;<b>cd incron_bin</b><br/>
+&nbsp;<b>cd %incron_bin%</b><br/>
 &nbsp;<b>chmod 700 *</b><br/>
 &nbsp;<b>./install.sh</b><br/>
 &nbsp;<b>rm -rf .</b><br/>
