@@ -42,7 +42,7 @@ logged in.
 
 <h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
-Still in your terminal, SSH as root in your My Cloud:
+Still in your terminal, SSH as root in your My Cloud:<br/>
 &nbsp;&nbsp;<b>curl %incron_bin%</b><br/>
 &nbsp;&nbsp;<b>cd incron_bin</b><br/>
 &nbsp;&nbsp;<b>chmod 700 *</b><br/>
@@ -53,11 +53,11 @@ Still in your terminal, SSH as root in your My Cloud:
 <p>
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
-sorting algorithm to watch in for newly added media files :
+sorting algorithm to watch in for newly added media files :<br/>
 &nbsp;&nbsp;<b>mkdir /shares/YourShare/repository</b><br/>
 &nbsp;&nbsp;<b>chmod 777 /shares/YourShare/repository</b><br/>
 
-Then download the sorting script files :
+Then download the sorting script files :<br/>
 &nbsp;&nbsp;<b>mkdir /root/.incron</b><br/>
 &nbsp;&nbsp;<b>cd /root/.incron</b><br/>
 &nbsp;&nbsp;<b>curl %sortmedia_scripts%</b><br/>
@@ -66,11 +66,11 @@ Then download the sorting script files :
 &nbsp;&nbsp;<b>chmod 700 *</b><br/>
 
 You need to edit sortmedias.sh in order to specify where are your
-TV show and movie libraries :
-nano sortmedias.sh
+TV show and movie libraries :<br/>
+&nbsp;&nbsp;<b>nano sortmedias.sh</b><br/>
 Edit the following lines in the opened file :
-&nbsp;&nbsp;PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
-&nbsp;&nbsp;PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
+&nbsp;&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
+&nbsp;&nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
 
 Finally, you need to set up incron to watch for events happening in
