@@ -22,7 +22,7 @@ project is v04.04.02-105 and this setup won't function on earlier
 builds.
 </p>
 
-<h2>Step 1 : Enable SSH access to My Cloud</h2>
+<h3>Step 1 : Enable SSH access to My Cloud</h3>
 <p>
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
@@ -38,7 +38,7 @@ The default password is welc0me, you should change it once your are
 logged in.
 </p>
 
-<h2>Step 2 : Install Incron and its dependencies</h2>
+<h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
 Still in your terminal, SSH as root in your My Cloud:
 curl %incron_bin%
@@ -47,7 +47,7 @@ chmod 700 *
 ./install.sh
 </p>
 
-<h2>Step 3 : Setup the file sorting script</h2>
+<h3>Step 3 : Setup the file sorting script</h3>
 <p>
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
