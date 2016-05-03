@@ -28,14 +28,14 @@ builds.
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
 web browser, open http://wdmycloud.local and log in.<br/>
-&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
+&nbsp;&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
 </p>
 <p>
 Still from that same page, you must enable SSH access:<br/>
-<b>Toggle on : Settings > Network Services > SSH</b>
+&nbsp;&nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
 </p>
 Then from your terminal:
-ssh root@wdmycloud.local
+&nbsp;&nbsp;<b>ssh root@wdmycloud.local</b>
 The default password is welc0me, you should change it once your are
 logged in.
 </p>
@@ -43,10 +43,10 @@ logged in.
 <h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
 Still in your terminal, SSH as root in your My Cloud:
-curl %incron_bin%
-cd incron_bin
-chmod 700 *
-./install.sh
+&nbsp;&nbsp;<b>curl %incron_bin%</b><br/>
+&nbsp;&nbsp;<b>cd incron_bin</b><br/>
+&nbsp;&nbsp;<b>chmod 700 *</b><br/>
+&nbsp;&nbsp;<b>./install.sh</b><br/>
 </p>
 
 <h3>Step 3 : Setup the file sorting script</h3>
@@ -54,16 +54,16 @@ chmod 700 *
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
 sorting algorithm to watch in for newly added media files :
-mkdir /shares/YourShare/repository
-chmod 777 /shares/YourShare/repository
+&nbsp;&nbsp;<b>mkdir /shares/YourShare/repository<br/>
+&nbsp;&nbsp;<b>chmod 777 /shares/YourShare/repository<br/>
 
 Then download the sorting script files :
-mkdir /root/.incron
-cd /root/.incron
-curl %sortmedia_scripts%
-cp sortmedia_scripts/* .
-rm sortmedia_scripts
-chmod 700 *
+&nbsp;&nbsp;<b>mkdir /root/.incron</b>
+&nbsp;&nbsp;<b>cd /root/.incron</b>
+&nbsp;&nbsp;<b>curl %sortmedia_scripts%</b>
+&nbsp;&nbsp;<b>cp sortmedia_scripts/* .</b>
+&nbsp;&nbsp;<b>rm sortmedia_scripts</b>
+&nbsp;&nbsp;<b>chmod 700 *</b>
 
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :
