@@ -69,19 +69,19 @@ You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :
 nano sortmedias.sh
 Edit the following lines in the opened file :
-  PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'
-  PATH_MOVIES='/DataVolume/shares/YourShare/Movies'
+&nbsp;&nbsp;PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b><br/>
+&nbsp;&nbsp;PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
 Save and exit.
 
 Finally, you need to set up incron to watch for events happening in
 your repository :
-&nbsp;&nbsp;<b>incrontab -e<b></br>
+&nbsp;&nbsp;<b>incrontab -e</b><br/>
 Add the following line in the opened file :
 &nbsp;&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
 Save and exit.
 
 Make sure incron is running :
-&nbsp;&nbsp;<b>/etc/init.d/incron status<b></br>
+&nbsp;&nbsp;<b>/etc/init.d/incron status<b><br/>
 And if it is not :
-&nbsp;&nbsp;<b>/etc/init.d/incron start<b></br>
+&nbsp;&nbsp;<b>/etc/init.d/incron start<b><br/>
 </p>
