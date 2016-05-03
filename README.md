@@ -32,7 +32,7 @@ web browser, open http://wdmycloud.local and log in. Then :<br/>
 &nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable Auto Update </b><br/>
 </p>
 <p>
-Still from that same page, you must enable SSH access :<br/>
+From that same page, you must enable SSH access :<br/>
 &nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
 </p>
 Then from your terminal : <br/>
