@@ -34,7 +34,7 @@ web browser, open http://wdmycloud.local and log in.<br/>
 Still from that same page, you must enable SSH access:<br/>
 &nbsp;&nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
 </p>
-Then from your terminal:
+Then from your terminal: <br/>
 &nbsp;&nbsp;<b>ssh root@wdmycloud.local</b>
 The default password is welc0me, you should change it once your are
 logged in.
