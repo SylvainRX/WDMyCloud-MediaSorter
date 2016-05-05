@@ -90,11 +90,11 @@ Your WD My Cloud should now be able to sort any files or directory of files drop
 
 
 ##Make it better with Transmission
-I have made this sorting algorithm in a way that the bittorrent client Transmission can also drop its downloads into the sorting repository to have them sorted automatically. If you wish to install transmission, you can uncomment the last lines in install.sh before executing it.
+I have made this sorting algorithm in a way that in can be used with the bittorrent client Transmission. Transmission can use torrent files droped into the repository and drop its downloaded files into it to have them sorted automatically.
 
-In prior to install transmission, you may want to create a new user "debian-transmission" via the web ui and grant it full access on the shares transmission may write into.
+If you wish to install transmission, you can uncomment the last lines in install.sh before executing it. In prior to install transmission, you may want to create a new user "debian-transmission" via the web ui (http://wdmycloud.local/UI/) and grant it full access to the shares transmission may write into.
 
-To sort any files downloaded, you need to set up Transmission. To do so, start by stopping transmission-deamon 
+Then you need to set up Transmission : start by stopping transmission-deamon and create a new directory for incomplete downloads.
 ```
 /etc/init.d/transmission-daemon stop
 mkdir "/shares/YourShare/repository/.transmission"
@@ -103,6 +103,17 @@ And edit <b>/var/lib/transmission-daemon/info/settings.json</b> and set the para
 ```
 "incomplete-dir": "/shares/YourShare/repository/.transmission",
 "incomplete-dir-enabled": true,
-"watch-dir": "/DataVolume/shares/Sylvain/Depos/",
+"rpc-authentication-required": false,
+"rpc-enabled": true,
+"rpc-port": 9091,
+"rpc-url": "/transmission/",
+"rpc-username": "",
+"rpc-whitelist": "127.0.0.1,192.168.0.*",
+"rpc-whitelist-enabled": true,
+"watch-dir": "/shares/YourShare/repository/",
 "watch-dir-enabled": true
+```
+Finally, restart transmission :
+```
+/etc/init.d/transmission-daemon start
 ```
