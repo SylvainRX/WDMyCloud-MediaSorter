@@ -37,7 +37,9 @@ From that same page, you must enable SSH access :<br/>
 &nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
 </p>
 Then from your terminal : <br/>
-&nbsp;<b>ssh root@wdmycloud.local</b><br/>
+```
+ssh root@wdmycloud.local
+```
 The default password is welc0me, you should change it once your are
 logged in.
 </p>
@@ -45,10 +47,12 @@ logged in.
 <h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
 Still in your terminal, SSH as root in your My Cloud :<br/>
-&nbsp;<b>git clone git://github.com/SylvainRX/WDMyCloud_MediaSorter.git</b><br/>
-&nbsp;<b>chmod -R 700 WDMyCloud_MediaSorter</b><br/>
-&nbsp;<b>cd WDMyCloud_MediaSorter/incron_bin</b><br/>
-&nbsp;<b>./install.sh</b><br/>
+```
+git clone git://github.com/SylvainRX/WDMyCloud_MediaSorter.git
+chmod -R 700 WDMyCloud_MediaSorter
+cd WDMyCloud_MediaSorter/incron_bin
+./install.sh
+```
 </p>
 
 <h3>Step 3 : Setup the file sorting script</h3>
@@ -56,40 +60,51 @@ Still in your terminal, SSH as root in your My Cloud :<br/>
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
 sorting algorithm to watch in for newly added media files :<br/>
-&nbsp;<b>mkdir /shares/YourShare/repository</b><br/>
-&nbsp;<b>chmod 777 /shares/YourShare/repository</b><br/>
+```
+mkdir /shares/YourShare/repository
+chmod 777 /shares/YourShare/repository
+```
 </p>
 <p>
 Then create a directory to put in the script files :<br/>
-&nbsp;<b>mkdir /root/.incron</b><br/>
-&nbsp;<b>cd ../sortmedia_scripts</b><br/>
-&nbsp;<b>mv * /root/.incron</b><br/>
-&nbsp;<b>cd ../..</b><br/>
-&nbsp;<b>rm -rf WDMyCloud_MediaSorter</b><br/>
+```
+mkdir /root/.incron
+cd ../sortmedia_scripts
+mv * /root/.incron
+cd ../..
+rm -rf WDMyCloud_MediaSorter
+```
 </p>
 <p>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
-&nbsp;<b>nano /root/.incron/sortmedias.sh</b><br/>
+```
+nano /root/.incron/sortmedias.sh
+```
 Edit the following lines in the opened file so the path are right :
-<br/>
-&nbsp;<b>PATH_TVSHOWS='/shares/YourShare/TV Shows'</b>
-<br/>
-&nbsp;<b>PATH_MOVIES='/shares/YourShare/Movies'</b><br/>
+```
+PATH_TVSHOWS='/shares/YourShare/TV Shows'
+PATH_MOVIES='/shares/YourShare/Movies'
+```
 Save and exit.
 </p>
 <p>
 Finally, you need to set up incron to watch for events happening in
 your repository :<br/>
-&nbsp;<b>incrontab -e</b><br/>
+```
+incrontab -e
+```
 Add the following line in the opened file :<br/>
-&nbsp;<b>"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR
-"/path/to/this/script/sortmedias.sh" $# $@ $% $&</b><br/>
+```
+"/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&
+```
 Save and exit.<br/>
 </p>
 <p>
 Make sure incron is running :<br/>
-&nbsp;<b>/etc/init.d/incron start</b><br/>
+```
+/etc/init.d/incron start
+```
 </p>
 <p>
 Your WD My Cloud should now be able to sort any files or directory
