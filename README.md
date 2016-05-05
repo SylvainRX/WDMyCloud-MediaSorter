@@ -28,13 +28,13 @@ earlier builds.</b>
 
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
-web browser, open http://wdmycloud.local and log in. Then :
-&nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable
+web browser, open http://wdmycloud.local and log in. Then,
+<b>toggle off : Settings > Firmware > Auto Update > Enable
 Auto Update </b>
 
 
 From that same page, you must enable SSH access :
-&nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
+<b>toggle on : Settings>Network Services>SSH</b>
 
 Then from your terminal : 
 ```
