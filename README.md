@@ -2,13 +2,17 @@
 
 ##Introduction
 
-WD My Cloud is a NAS with a web access provided by Western Digital. As it is, it is a great storing device for your media center (eg : https://kodi.tv/) but it can become a repetitive task to find the right path in which to store each newly
-downloaded TV show episode or movie in your library. Although, the My Cloud runs under a modified version of Debian so it can be tweaked to suit our needs. This tutorial shows how we can add the feature to automatically sort any media files dropped into a given directory to their right path in the library.
+WD My Cloud is a NAS with a web access provided by Western Digital. As it is, it is a great storage device for your media center (eg : https://kodi.tv/), but it can become a repetitive task to find the right path in which to store each newly downloaded TV show episode or movie in your library. However, the My Cloud runs under a modified version of Debian, so it can be tweaked to suit our needs. This tutorial shows how we can add a feature to automatically sort any media files dropped into a given directory to their right path in the library.
 
+The library handled by the sorting scripts must be organized as follow :
+/path/TV Shows/[tv show title]/[Season x]/[media files]
+/path/Movies/[movie title]/[media files]
+
+Incron provides possibility to simply monitor various events on files in filesystems and will be use to trigger our sorting script. http://inotify.aiken.cz/?section=incron&page=about
 
 ##Disclaimer
 
-The modification you may do after using SSH to log into your WD My Cloud may break it and void its warranty. I won't take any responsibility over any issues you may get through this process. This tutorial only exists for its informative purpose.
+Any modification you may make using SSH to log into your WD My Cloud may break it and void its warranty. I am not responsible for any issues you may encounter through this process. This tutorial only exists for its informative purpose.
 
 <b>The firmware version on the WD My Cloud that has been used for this project is v04.04.02-105 and this setup won't function on earlier builds.</b>
 
@@ -16,21 +20,21 @@ The modification you may do after using SSH to log into your WD My Cloud may bre
 ##Setup
 ###Step 1 : Enable SSH access to My Cloud
 
-Before doing any modification you must make sure they won't be erased by the next automatic firmware update, to do so, go in your web browser, open your My Cloud web ui (http://wdmycloud.local) and log in. Then, <b>toggle off : Settings>Firmware>Auto Update>Enable Auto Update </b>
+Before doing any modification, you must make sure they won't be erased by the next automatic firmware update. To do so, go in your web browser, open your My Cloud web interface (http://wdmycloud.local) and log in. Then, <b>toggle off : Settings>Firmware>Auto Update>Enable Auto Update </b>
 
 From that same page, you must enable SSH access :
 <b>toggle on : Settings>Network Services>SSH</b>
 
-Then from your terminal : 
+Then from your terminal :
 ```
 ssh root@wdmycloud.local
 ```
-The default password is welc0me, you should change it once your are logged in.
+The default password is welc0me, you should change it once you are logged in.
 
 
 ###Step 2 : Install Incron and its dependencies
 
-Still in your terminal, SSH as root in your My Cloud :
+Before executing the following lines, read the last section of this file. In your terminal, SSH as root in your My Cloud :
 ```
 git clone git://github.com/SylvainRX/WDMyCloud_MediaSorter.git
 chmod -R 700 WDMyCloud_MediaSorter
@@ -41,12 +45,13 @@ cd WDMyCloud_MediaSorter/incron_bin
 
 ###Step 3 : Setup the file sorting script
 
-Still as root in your My Cloud, create a directory under "/shares/YourShare/repository" which will be the repository for the sorting algorithm to watch in for newly added media files :
+As root in your My Cloud, create a directory under "/shares/YourShare/repository" which will be the repository for the sorting script :
 ```
 mkdir /shares/YourShare/repository
-chmod 777 /shares/YourShare/repository
+mkdir /shares/YourShare/repository/.trash
+chmod -R 777 /shares/YourShare/repository
 ```
-
+Any new files that are added to the repository will be handled and sorted by the sorting script.
 
 Then create a directory to put in the script files :
 ```
@@ -62,10 +67,11 @@ You need to edit sortmedias.sh in order to specify where are your TV show and mo
 ```
 nano /root/.incron/sortmedias.sh
 ```
-Edit the following lines in the opened file so the path are right :
+Edit the following lines in the opened file so the paths are right :
 ```
 PATH_TVSHOWS='/shares/YourShare/TV Shows'
 PATH_MOVIES='/shares/YourShare/Movies'
+PATH_TRASH='/path/to/your/repository/.trash'
 ```
 Save and exit.
 
@@ -90,16 +96,17 @@ Your WD My Cloud should now be able to sort any files or directory of files drop
 
 
 ##Make it better with Transmission
-I have made this sorting algorithm in a way that in can be used with the bittorrent client Transmission. Transmission can use torrent files droped into the repository and drop its downloaded files into it to have them sorted automatically.
+I created this sorting script in a way that in can be used with the bittorrent client Transmission. Transmission can use torrent files dropped into the repository and set the downloaded files into it to have them sorted automatically.
 
-If you wish to install transmission, you can uncomment the last lines in install.sh before executing it. In prior to install transmission, you may want to create a new user "debian-transmission" via the web ui (http://wdmycloud.local/UI/) and grant it full access to the shares transmission may write into.
+If you wish to install Transmission, you can uncomment the last lines in install.sh before executing it. However, prior to installation, you will want to create a new user "debian-transmission" via the web ui (http://wdmycloud.local/UI/) and grant it full access to the shares directory.
 
-Then you need to set up Transmission : start by stopping transmission-deamon and create a new directory for incomplete downloads.
+Then you need to set up Transmission : start by stopping transmission-deamon, then create a new directory for incomplete downloads.
 ```
 /etc/init.d/transmission-daemon stop
+mkdir "/shares/YourShare/repository"
 mkdir "/shares/YourShare/repository/.transmission"
 ```
-And edit <b>/var/lib/transmission-daemon/info/settings.json</b> and set the parameter as follow, adapting the path to your own system :
+Edit <b>/var/lib/transmission-daemon/info/settings.json</b> and set the parameter as follows, adapting the path to your own system :
 ```
 "incomplete-dir": "/shares/YourShare/repository/.transmission",
 "incomplete-dir-enabled": true,
@@ -117,3 +124,4 @@ Finally, restart transmission :
 ```
 /etc/init.d/transmission-daemon start
 ```
+You can now start downloads with transmission by dropping torrent files in /shares/YourShare/repository or via its web interface (http://wdmycloud.local:9091/transmission/web/).
