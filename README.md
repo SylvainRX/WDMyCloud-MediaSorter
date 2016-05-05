@@ -17,7 +17,7 @@ the library.
 <p>
 The modification you may do after using SSH to log into your WD My
 Cloud may void its warranty and I won't take any responsibility
-over that. This tutorial is only for an informative purpose.<br/>
+over that. This tutorial only exists as an informative purpose.<br/>
 <b>The firmware version on the WD My Cloud that has been used for
 this project is v04.04.02-105 and this setup won't function on
 earlier builds.</b>
