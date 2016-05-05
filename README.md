@@ -13,7 +13,7 @@ media files dropped into a given directory to their right path in
 the library.
 
 
-##Disclaimer :
+##Disclaimer
 
 The modification you may do after using SSH to log into your WD My
 Cloud may void its warranty and I won't take any responsibility
@@ -112,10 +112,24 @@ of files dropped into /shares/YourShare/repository. You can further
 edit sortmedias.sh to specify a directory in which to write a log file
 and a trash directory to move unsorted files into.
 
+
+##Make it better with Transmission
 I have made this sorting algorithm in a way that the bittorrent
-client Transmission can also drop its downloaded files into the
-sorting repository and have them sorted automatically. If you wish
-to install transmission, you can uncomment the last lines in install.sh.
+client Transmission can also drop its downloads into the
+sorting repository to have them sorted automatically. If you wish
+to install transmission, you can uncomment the last lines in install.sh before executing it.
 In prior to install transmission, you may want to create a new user
 "debian-transmission" via the web ui and grant it full access on the shares
 transmission may write into.
+To sort any files downloaded, you need to set up Transmission. To do so, start by stopping transmission-deamon 
+```
+/etc/init.d/transmission-daemon stop
+mkdir "/shares/YourShare/repository/.transmission"
+```
+And edit <b>/var/lib/transmission-daemon/info/settings.json</b> and set the parameter as follow, adapting the path to your own system :
+```
+"incomplete-dir": "/shares/YourShare/repository/.transmission",
+"incomplete-dir-enabled": true,
+"watch-dir": "/DataVolume/shares/Sylvain/Depos/",
+"watch-dir-enabled": true
+```
