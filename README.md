@@ -2,31 +2,21 @@
 
 ##Introduction
 
-WD My Cloud is a NAS with a web access provided by Western Digital.
-As it is, it is a great storing device for your media center
-(eg : https://kodi.tv/) but it can become a repetitive task to find
-the right path, in your library, in which to store each newly
-downloaded TV show episode or movie. Although, the My Cloud runs
-under a modified version of Debian so it can be tweaked to suit
-our needs. So we can add the feature to automatically sort any
-media files dropped into a given directory to their right path in
-the library.
+WD My Cloud is a NAS with a web access provided by Western Digital. As it is, it is a great storing device for your media center (eg : https://kodi.tv/) but it can become a repetitive task to find the right path in which to store each newly
+downloaded TV show episode or movie in your library. Although, the My Cloud runs under a modified version of Debian so it can be tweaked to suit our needs. This tutorial shows how we can add the feature to automatically sort any media files dropped into a given directory to their right path in the library.
 
 
 ##Disclaimer
 
-The modification you may do after using SSH to log into your WD My
-Cloud may void its warranty and I won't take any responsibility
-over that. This tutorial only exists as an informative purpose.
-<b>The firmware version on the WD My Cloud that has been used for
-this project is v04.04.02-105 and this setup won't function on
-earlier builds.</b>
+The modification you may do after using SSH to log into your WD My Cloud may break it and void its warranty. I won't take any responsibility over any issues you may get through this process. This tutorial only exists for its informative purpose.
+
+<b>The firmware version on the WD My Cloud that has been used for this project is v04.04.02-105 and this setup won't function on earlier builds.</b>
 
 
 ##Setup
 ###Step 1 : Enable SSH access to My Cloud
 
-Before doing any modification you must make sure they won't be erased by the next automatic firmware update, to do so, go in your web browser, open http://wdmycloud.local and log in. Then, <b>toggle off : Settings>Firmware>Auto Update>Enable Auto Update </b>
+Before doing any modification you must make sure they won't be erased by the next automatic firmware update, to do so, go in your web browser, open your My Cloud web ui (http://wdmycloud.local) and log in. Then, <b>toggle off : Settings>Firmware>Auto Update>Enable Auto Update </b>
 
 From that same page, you must enable SSH access :
 <b>toggle on : Settings>Network Services>SSH</b>
