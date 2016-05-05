@@ -45,11 +45,10 @@ logged in.
 <h3>Step 2 : Install Incron and its dependencies</h3>
 <p>
 Still in your terminal, SSH as root in your My Cloud :<br/>
-&nbsp;<b>curl %incron_bin%</b><br/>
-&nbsp;<b>cd %incron_bin%</b><br/>
-&nbsp;<b>chmod 700 *</b><br/>
+&nbsp;<b>git clone git://github.com/SylvainRX/WDMyCloud_MediaSorter.git</b><br/>
+&nbsp;<b>chmod -R 700 WDMyCloud_MediaSorter</b><br/>
+&nbsp;<b>cd WDMyCloud_MediaSorter/incron_bin</b><br/>
 &nbsp;<b>./install.sh</b><br/>
-&nbsp;<b>rm -rf .</b><br/>
 </p>
 
 <h3>Step 3 : Setup the file sorting script</h3>
@@ -61,18 +60,17 @@ sorting algorithm to watch in for newly added media files :<br/>
 &nbsp;<b>chmod 777 /shares/YourShare/repository</b><br/>
 </p>
 <p>
-Then download the sorting script files :<br/>
+Then create a directory to put in the script files :<br/>
 &nbsp;<b>mkdir /root/.incron</b><br/>
-&nbsp;<b>cd /root/.incron</b><br/>
-&nbsp;<b>curl %sortmedia_scripts%</b><br/>
-&nbsp;<b>mv %sortmedia_scripts%/* .</b><br/>
-&nbsp;<b>rm %sortmedia_scripts%</b><br/>
-&nbsp;<b>chmod 700 *</b><br/>
+&nbsp;<b>cd ../sortmedia_scripts</b><br/>
+&nbsp;<b>mv * /root/.incron</b><br/>
+&nbsp;<b>cd ../..</b><br/>
+&nbsp;<b>rm -rf WDMyCloud_MediaSorter</b><br/>
 </p>
 <p>
 You need to edit sortmedias.sh in order to specify where are your
 TV show and movie libraries :<br/>
-&nbsp;<b>nano sortmedias.sh</b><br/>
+&nbsp;<b>nano /root/.incron/sortmedias.sh</b><br/>
 Edit the following lines in the opened file so the path are right :
 <br/>
 &nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b>
