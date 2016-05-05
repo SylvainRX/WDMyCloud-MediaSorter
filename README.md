@@ -1,7 +1,7 @@
 # Automatically sort media files on a WD My Cloud NAS with Incron
 
 <h2>Introduction</h2>
-<p>
+
 WD My Cloud is a NAS with a web access provided by Western Digital.
 As it is, it is a great storing device for your media center
 (eg : https://kodi.tv/) but it can become a repetitive task to find
@@ -11,62 +11,62 @@ under a modified version of Debian so it can be tweaked to suit
 our needs. So we can add the feature to automatically sort any
 media files dropped into a given directory to their right path in
 the library.
-</p>
+
 
 <h2>Disclaimer :</h2>
-<p>
+
 The modification you may do after using SSH to log into your WD My
 Cloud may void its warranty and I won't take any responsibility
-over that. This tutorial only exists as an informative purpose.<br/>
+over that. This tutorial only exists as an informative purpose.
 <b>The firmware version on the WD My Cloud that has been used for
 this project is v04.04.02-105 and this setup won't function on
 earlier builds.</b>
-</p>
+
 
 <h2>Setup</h2>
 <h3>Step 1 : Enable SSH access to My Cloud</h3>
-<p>
+
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
-web browser, open http://wdmycloud.local and log in. Then :<br/>
+web browser, open http://wdmycloud.local and log in. Then :
 &nbsp;<b>Toggle off : Settings > Firmware > Auto Update > Enable
-Auto Update </b><br/>
-</p>
-<p>
-From that same page, you must enable SSH access :<br/>
+Auto Update </b>
+
+
+From that same page, you must enable SSH access :
 &nbsp;<b>Toggle on : Settings > Network Services > SSH</b>
-</p>
-Then from your terminal : <br/>
+
+Then from your terminal : 
 ```
 ssh root@wdmycloud.local
 ```
 The default password is welc0me, you should change it once your are
 logged in.
-</p>
+
 
 <h3>Step 2 : Install Incron and its dependencies</h3>
-<p>
-Still in your terminal, SSH as root in your My Cloud :<br/>
+
+Still in your terminal, SSH as root in your My Cloud :
 ```
 git clone git://github.com/SylvainRX/WDMyCloud_MediaSorter.git
 chmod -R 700 WDMyCloud_MediaSorter
 cd WDMyCloud_MediaSorter/incron_bin
 ./install.sh
 ```
-</p>
+
 
 <h3>Step 3 : Setup the file sorting script</h3>
-<p>
+
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
-sorting algorithm to watch in for newly added media files :<br/>
+sorting algorithm to watch in for newly added media files :
 ```
 mkdir /shares/YourShare/repository
 chmod 777 /shares/YourShare/repository
 ```
-</p>
-<p>
-Then create a directory to put in the script files :<br/>
+
+
+Then create a directory to put in the script files :
 ```
 mkdir /root/.incron
 cd ../sortmedia_scripts
@@ -74,10 +74,10 @@ mv * /root/.incron
 cd ../..
 rm -rf WDMyCloud_MediaSorter
 ```
-</p>
-<p>
+
+
 You need to edit sortmedias.sh in order to specify where are your
-TV show and movie libraries :<br/>
+TV show and movie libraries :
 ```
 nano /root/.incron/sortmedias.sh
 ```
@@ -87,31 +87,31 @@ PATH_TVSHOWS='/shares/YourShare/TV Shows'
 PATH_MOVIES='/shares/YourShare/Movies'
 ```
 Save and exit.
-</p>
-<p>
+
+
 Finally, you need to set up incron to watch for events happening in
-your repository :<br/>
+your repository :
 ```
 incrontab -e
 ```
-Add the following line in the opened file :<br/>
+Add the following line in the opened file :
 ```
 "/path/to/your/repository" IN_CREATE,IN_MOVED_TO,IN_ISDIR "/path/to/this/script/sortmedias.sh" $# $@ $% $&
 ```
-Save and exit.<br/>
-</p>
-<p>
-Make sure incron is running :<br/>
+Save and exit.
+
+
+Make sure incron is running :
 ```
 /etc/init.d/incron start
 ```
-</p>
-<p>
+
+
 Your WD My Cloud should now be able to sort any files or directory
 of files dropped into /shares/YourShare/repository. You can further
 edit sortmedias.sh to specify a directory in which write a log file
-and a trash directory to move unsorted files into.<br/>
+and a trash directory to move unsorted files into.
 I have made this sorting algorithm in a way that the bittorrent
 client Transmission can also drop its downloaded files into the
 sorting repository and have them sorted automatically.
-<p>
+
