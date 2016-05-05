@@ -1,6 +1,6 @@
-# Automatically sort media files on a WD My Cloud NAS with Incron
+#Automatically sort media files on a WD My Cloud NAS with Incron
 
-<h2>Introduction</h2>
+##Introduction
 
 WD My Cloud is a NAS with a web access provided by Western Digital.
 As it is, it is a great storing device for your media center
@@ -13,7 +13,7 @@ media files dropped into a given directory to their right path in
 the library.
 
 
-<h2>Disclaimer :</h2>
+##Disclaimer :
 
 The modification you may do after using SSH to log into your WD My
 Cloud may void its warranty and I won't take any responsibility
@@ -23,8 +23,8 @@ this project is v04.04.02-105 and this setup won't function on
 earlier builds.</b>
 
 
-<h2>Setup</h2>
-<h3>Step 1 : Enable SSH access to My Cloud</h3>
+##Setup
+###Step 1 : Enable SSH access to My Cloud
 
 Before doing any modification you must make sure they won't be
 erased by the next automatic firmware update, to do so, go in your
@@ -44,7 +44,7 @@ The default password is welc0me, you should change it once your are
 logged in.
 
 
-<h3>Step 2 : Install Incron and its dependencies</h3>
+###Step 2 : Install Incron and its dependencies
 
 Still in your terminal, SSH as root in your My Cloud :
 ```
@@ -55,7 +55,7 @@ cd WDMyCloud_MediaSorter/incron_bin
 ```
 
 
-<h3>Step 3 : Setup the file sorting script</h3>
+###Step 3 : Setup the file sorting script
 
 Still as root in your My Cloud, create a directory under
 "/shares/YourShare/repository" which will be the repository for the
@@ -114,4 +114,3 @@ and a trash directory to move unsorted files into.
 I have made this sorting algorithm in a way that the bittorrent
 client Transmission can also drop its downloaded files into the
 sorting repository and have them sorted automatically.
-
