@@ -6,9 +6,9 @@ WD My Cloud is a NAS with a web access provided by Western Digital.
 As it is, it is a great storing device for your media center
 (eg : https://kodi.tv/) but it can become a repetitive task to find
 the right path, in your library, in which to store each newly
-downloaded TV show episode or movie. Although, the My Cloud running
+downloaded TV show episode or movie. Although, the My Cloud runs
 under a modified version of Debian so it can be tweaked to suit
-your needs. So we can add the feature to automatically sort any
+our needs. So we can add the feature to automatically sort any
 media files dropped into a given directory to their right path in
 the library.
 </p>
