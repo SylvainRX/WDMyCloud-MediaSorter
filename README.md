@@ -73,9 +73,9 @@ TV show and movie libraries :<br/>
 &nbsp;<b>nano /root/.incron/sortmedias.sh</b><br/>
 Edit the following lines in the opened file so the path are right :
 <br/>
-&nbsp;<b>PATH_TVSHOWS='/DataVolume/shares/YourShare/TV Shows'</b>
+&nbsp;<b>PATH_TVSHOWS='/shares/YourShare/TV Shows'</b>
 <br/>
-&nbsp;<b>PATH_MOVIES='/DataVolume/shares/YourShare/Movies'</b><br/>
+&nbsp;<b>PATH_MOVIES='/shares/YourShare/Movies'</b><br/>
 Save and exit.
 </p>
 <p>
