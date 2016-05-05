@@ -109,8 +109,13 @@ Make sure incron is running :
 
 Your WD My Cloud should now be able to sort any files or directory
 of files dropped into /shares/YourShare/repository. You can further
-edit sortmedias.sh to specify a directory in which write a log file
+edit sortmedias.sh to specify a directory in which to write a log file
 and a trash directory to move unsorted files into.
+
 I have made this sorting algorithm in a way that the bittorrent
 client Transmission can also drop its downloaded files into the
-sorting repository and have them sorted automatically.
+sorting repository and have them sorted automatically. If you wish
+to install transmission, you can uncomment the last lines in install.sh.
+In prior to install transmission, you may want to create a new user
+"debian-transmission" via the web ui and grant it full access on the shares
+transmission may write into.
