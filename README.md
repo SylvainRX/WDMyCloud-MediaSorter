@@ -124,4 +124,6 @@ Finally, restart transmission :
 ```
 /etc/init.d/transmission-daemon start
 ```
-You can now start downloads with transmission by dropping torrent files in /shares/YourShare/repository or via its web interface (http://wdmycloud.local:9091/transmission/web/).
+You can now start downloads with transmission and have all those files sorted for you.
+
+Thanks in advance for any feedback or informations about issues you may have encountered.
