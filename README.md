@@ -69,9 +69,9 @@ nano /root/.incron/sortmedias.sh
 ```
 Edit the following lines in the opened file so the paths are right :
 ```
-PATH_TVSHOWS='/shares/YourShare/TV Shows'
+PATH_TVSHOWS='/shares/YourShare/TV_Shows'
 PATH_MOVIES='/shares/YourShare/Movies'
-PATH_TRASH='/path/to/your/repository/.trash'
+PATH_TRASH='/shares/YourShare/repository/.trash'
 ```
 Save and exit.
 
