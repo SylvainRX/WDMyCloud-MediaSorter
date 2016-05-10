@@ -96,7 +96,7 @@ Your WD My Cloud should now be able to sort any files or directory of files drop
 
 
 ##Make it better with Transmission
-I created this sorting script in a way that in can be used with the bittorrent client Transmission. Transmission can use torrent files dropped into the repository and set the downloaded files into it to have them sorted automatically.
+I created this sorting script in a way that in can be used with the bittorrent client Transmission. Transmission can use torrent files dropped into the repository and set the downloaded files into it to have them sorted automatically. Although catching torrent files seems to slow down the system, so instead you can send magnet links or torrent through its web UI (http://wdmycloud.local:9091/transmission/web/) or using an extension for your browser sending links to your remote transmission client (I personnally use this one with Chrome : https://github.com/bogenpirat/remote-torrent-adder)
 
 If you wish to install Transmission, you can uncomment the last lines in install.sh before executing it. However, prior to installation, you will want to create a new user "debian-transmission" via the web ui (http://wdmycloud.local/UI/) and grant it full access to the shares directory.
 
@@ -117,6 +117,9 @@ Edit <b>/var/lib/transmission-daemon/info/settings.json</b> and set the paramete
 "rpc-username": "",
 "rpc-whitelist": "127.0.0.1,192.168.0.*",
 "rpc-whitelist-enabled": true,
+```
+Optionaly :
+```
 "watch-dir": "/shares/YourShare/repository/",
 "watch-dir-enabled": true
 ```
