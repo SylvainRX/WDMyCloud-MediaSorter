@@ -8,10 +8,10 @@
 # '/path/to/your/repository IN_CREATE,IN_MOVED_TO,IN_ISDIR /path/to/this/script/sortmedias.sh $# $@ $% $&'
 # The 4 following variable need to be set for the script to run properly.
 
-PATH_TVSHOWS='/DataVolume/shares/Sylvain/TV Shows'
-PATH_MOVIES='/DataVolume/shares/Sylvain/Movies'
-PATH_LOG='/shares/Sylvain/Depos/.log'
-PATH_TRASH='/shares/Sylvain/Depos/.trash'
+PATH_TVSHOWS='/DataVolume/shares/YourShareName/TV_Shows'
+PATH_MOVIES='/DataVolume/shares/YourShareName/Movies'
+PATH_LOG='DataVolume/shares/YourShareName/Repository/.log'
+PATH_TRASH='DataVolume/shares/YourShareName/Repository/.trash'
 
 PATH_REPOSITORY="$2"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
