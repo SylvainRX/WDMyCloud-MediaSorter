@@ -13,7 +13,9 @@ PID="$6"
 
 #TODO : favorize score for a tvshow folder if keywords are coming in the right order.
 
-if [[ $FILENAME != .* ]] && [[ $FILENAME != */.* ]] && [[ $FILENAME != *.torrent ]] && [[ $FILENAME != *.txt ]] && [[ "$FILENAME" ]]; then
+shopt -s nocaseglob
+
+if [[ $FILENAME != .* ]] && [[ $FILENAME != */.* ]] && [[ $FILENAME != *.torrent ]] && [[ $FILENAME != *.txt ]] && [[ $FILENAME != *.nfo ]] && [[ $FILENAME != *sample* ]] && [[ "$FILENAME" ]]; then
 	#Extract keywords and episode position in the tvshow
 	KEYWORDS=$FILENAME
 	KEYWORDS=$(basename "$KEYWORDS")
@@ -38,12 +40,12 @@ if [[ $FILENAME != .* ]] && [[ $FILENAME != */.* ]] && [[ $FILENAME != *.torrent
 	        echo "($PID) MOVING :  $PATH_REPOSITORY/$FILENAME" >> "${PATH_LOG}/sort.log"
 	        echo "($PID) TO :      $PATH_DEST/" >> "${PATH_LOG}/sort.log"
 	        mv "$PATH_REPOSITORY/$FILENAME" "$PATH_DEST/" >> "$PATH_LOG/sort.log"
+		chmod 777 -R "$PATH_DEST"
 		exit 1
 	fi
 
 	#Match keywords with TVSHOWS #
 	declare -A SCORES
-	shopt -s nocaseglob
 	for KEYWORD in $KEYWORDS; do
 		if ls "${PATH_TVSHOWS}" | grep -E *${KEYWORD}* 1> /dev/null 2>&1; then
 		for CURRENT_FILE in "${PATH_TVSHOWS}"/*${KEYWORD}*; do
@@ -84,5 +86,6 @@ if [[ $FILENAME != .* ]] && [[ $FILENAME != */.* ]] && [[ $FILENAME != *.torrent
 	#Fetch and move file to its destination
 	echo "($PID) MOVING :  $PATH_REPOSITORY/$FILENAME" >> "${PATH_LOG}/sort.log"
 	echo "($PID) TO :      $PATH_DEST/" >> "${PATH_LOG}/sort.log"
-	mv "$PATH_REPOSITORY/$FILENAME" "$PATH_DEST/" >> "$PATH_LOG/sort.log"
+	mv "$PATH_REPOSITORY/$FILENAME" "$PATH_DEST/"
+	chmod 777 "$PATH_DEST/$FILENAME"
 fi

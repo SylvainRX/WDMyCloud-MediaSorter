@@ -8,16 +8,16 @@
 # '/path/to/your/repository IN_CREATE,IN_MOVED_TO,IN_ISDIR /path/to/this/script/sortmedias.sh $# $@ $% $&'
 # The 4 following variable need to be set for the script to run properly.
 
-PATH_TVSHOWS='/path/to/your/library/TV Shows'
-PATH_MOVIES='/path/to/your/library/Movies'
-PATH_LOG='/path/to/you/repository/.log'
-PATH_TRASH='/path/to/you/repository/.trash'
+PATH_TVSHOWS='/DataVolume/shares/Sylvain/TV Shows'
+PATH_MOVIES='/DataVolume/shares/Sylvain/Movies'
+PATH_LOG='/shares/Sylvain/Depos/.log'
+PATH_TRASH='/shares/Sylvain/Depos/.trash'
 
 PATH_REPOSITORY="$2"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TIMEOUT=60
 
-if [[ $1 != .* ]] && [[ $1 != *.torrent ]] && [[ $1 != *__??????  ]] && [[ "$1" ]]; then
+if [[ $1 != .* ]] && [[ $1 != *.torrent ]] && [[ $1 != *.part ]] && [[ $1 != *.txt ]] && [[ $1 != *.nfo ]] && [[ $1 != *__??????  ]] && [[ "$1" ]]; then
 	echo "($$) $(date +%Y-%m-%d\ %H:%M:%S)  file: $1  repository: $2  event: $3($4)" >> "${PATH_LOG}/sort.log"
 	#Handle directory
 	if [[ $3 == *IN_ISDIR* ]]; then
