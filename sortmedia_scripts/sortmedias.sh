@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 
 # sortmedias.sh catches files and directory uploaded and moved into
 # PATH_REPOSITORY and send them individually to sortmediafile.sh, which must
@@ -17,7 +17,7 @@ PATH_REPOSITORY="$2"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TIMEOUT=60
 
-if [[ $1 != .* ]] && [[ $1 != *.torrent ]] && [[ $1 != *.part ]] && [[ $1 != *.txt ]] && [[ $1 != *.nfo ]] && [[ $1 != *__??????  ]] && [[ "$1" ]]; then
+if [[ $1 != .* ]] && [[ $1 != *.torrent ]] && [[ $1 != *.part ]] && [[ $1 != *__??????  ]] && [[ "$1" ]]; then
 	echo "($$) $(date +%Y-%m-%d\ %H:%M:%S)  file: $1  repository: $2  event: $3($4)" >> "${PATH_LOG}/sort.log"
 	#Handle directory
 	if [[ $3 == *IN_ISDIR* ]]; then
