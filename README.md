@@ -1,6 +1,6 @@
-#Automatically sort media files on a WD My Cloud NAS with Incron
+# Automatically sort media files on a WD My Cloud NAS with Incron
 
-##Introduction
+## Introduction
 
 WD My Cloud is a NAS with a web access provided by Western Digital. As it is, it is a great storage device for your media center (eg : https://kodi.tv/), but it can become a repetitive task to find the right path in which to store each newly downloaded TV show episode or movie in your library. However, the My Cloud runs under a modified version of Debian, so it can be tweaked to suit our needs. This tutorial shows how we can add a feature to automatically sort any media files dropped into a given directory to their right path in the library.
 
@@ -10,15 +10,15 @@ The library handled by the sorting scripts must be organized as follow :
 
 Incron provides possibility to simply monitor various events on files in filesystems and will be use to trigger our sorting script. http://inotify.aiken.cz/?section=incron&page=about
 
-##Disclaimer
+## Disclaimer
 
 Any modification you may make using SSH to log into your WD My Cloud may break it and void its warranty. I am not responsible for any issues you may encounter through this process. This tutorial only exists for its informative purpose.
 
 <b>The firmware version on the WD My Cloud that has been used for this project is v04.04.02-105 and this setup won't function on earlier builds.</b>
 
 
-##Setup
-###Step 1 : Enable SSH access to My Cloud
+## Setup
+### Step 1 : Enable SSH access to My Cloud
 
 Before doing any modification, you must make sure they won't be erased by the next automatic firmware update. To do so, go in your web browser, open your My Cloud web interface (http://wdmycloud.local) and log in. Then, <b>toggle off : Settings>Firmware>Auto Update>Enable Auto Update </b>
 
@@ -32,7 +32,7 @@ ssh root@wdmycloud.local
 The default password is welc0me, you should change it once you are logged in.
 
 
-###Step 2 : Install Incron and its dependencies
+### Step 2 : Install Incron and its dependencies
 
 Before executing the following lines, read the last section of this file. In your terminal, SSH as root in your My Cloud :
 ```
@@ -43,7 +43,7 @@ cd WDMyCloud_MediaSorter/incron_bin
 ```
 
 
-###Step 3 : Setup the file sorting script
+### Step 3 : Setup the file sorting script
 
 As root in your My Cloud, create a directory under "/shares/YourShare/repository" which will be the repository for the sorting script :
 ```
@@ -95,7 +95,7 @@ Make sure incron is running :
 Your WD My Cloud should now be able to sort any files or directory of files dropped into /shares/YourShare/repository. You can further edit sortmedias.sh to specify a directory in which to write a log file and a trash directory to move unsorted files into.
 
 
-##Make it better with Transmission
+## Make it better with Transmission
 I created this sorting script in a way that in can be used with the bittorrent client Transmission. Transmission can set the downloaded files into the sorting repository to have them sorted automatically.
 
 To start a download on your remote tranmission client, you can either send magnet links or torrent through its web UI (http://wdmycloud.local:9091/transmission/web/) or using an extension for your browser (I personnally use this one with Chrome : https://github.com/bogenpirat/remote-torrent-adder).
